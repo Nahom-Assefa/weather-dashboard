@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <header class = "container-fluid">
+        <h1 class= "col-12 mt-4 text-center h-25 bg-primary">Weather Dashboard</h1>
+    </header>
+    
+
+
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
+            <!-- <div class= "card"> -->
+                <h2 class="cityH2 text-uppercase">Search For A City:</h2>
+                <form id="user-form" class="card-body">
+                    <label class="form-label" for="cityName"></label>
+                    <input name="cityName" id="cityName" type="text" autofocus="true" class="form-input col-12 mb-3"/>
+                    <button type="submit" class="col-12 btn btn-info mb-2">Search</button>
+                </form>
+            <!-- </div> -->
+            <div class="card">
+              <div id= "city-buttons" class="card-body">
+                <button class="col-12 btn btn-secondary mb-2" data-language="minneapolis">Minneapolis</button>
+                <button class="col-12 btn btn-secondary mb-2" data-language="seattle">Seattle</button>
+                <button class="col-12 btn btn-secondary mb-2" data-language="chicago">Chicago</button>
+                <button class="col-12 btn btn-secondary mb-2" data-language="d.c.">D.C.</button>
+                <button class="col-12 btn btn-secondary mb-2" data-language="atlanta">Atlanta</button>
+                <button class="col-12 btn btn-secondary mb-2" data-language="tampa">Tampa</button>
+                <button class="col-12 btn btn-secondary mb-2" data-language="los angeles">Los Angeles</button>
+                <button class="col-12 btn btn-secondary mb-2" data-language="las vegas">Las Vegas</button>
+              </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.4.1/jquery.min.js"></script>
+    <!-- add the js file here -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
