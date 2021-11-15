@@ -12,21 +12,16 @@
 </head>
 <body>
     <header class = "container-fluid">
-        <h1 class= "col-12 mt-4 text-center h-25 bg-primary">Weather Dashboard</h1>
+        <h1 class= "col-12 mt-4 text-center text-light">Weather Dashboard</h1>
     </header>
-    
-
-
-    <main class="flex-row justify-space-between">
-        <div class="col-12 col-md-4">
-            <!-- <div class= "card"> -->
-                <h2 class="cityH2 text-uppercase">Search For A City:</h2>
-                <form id="user-form" class="card-body">
+    <div class= "wrapper row min-vh-100 no-gutters">
+    <section class="col-12 col-lg-3 sticky-top d-flex flex-column p-4 p-lg-3">
+                <h2 class="cityH2 mb-0 text-uppercase">Search For A City:</h2>
+                <form id="user-form">
                     <label class="form-label" for="cityName"></label>
                     <input name="cityName" id="cityName" type="text" autofocus="true" class="form-input col-12 mb-3"/>
                     <button type="submit" class="col-12 btn btn-info mb-2">Search</button>
                 </form>
-            <!-- </div> -->
             <div class="card">
               <div id= "city-buttons" class="card-body">
                 <button class="col-12 btn btn-secondary mb-2" data-language="minneapolis">Minneapolis</button>
@@ -39,8 +34,97 @@
                 <button class="col-12 btn btn-secondary mb-2" data-language="las vegas">Las Vegas</button>
               </div>
             </div>
+       
+    </section>
+  
+    
+
+
+
+        <main class="col-12 col-lg-9">
+            <div class= "current-weather col-12 border-dark">
+                <h2> Atlanta (3/302021) </h2>
+                <p> Temp: </p>
+                <p> Wind: </p>
+                <p> Humidity: </p>
+                <p> UV index: </p>
+
+                <!-- Forecast Day 1 
+                <div class="card border border-dark bg-secondary text-white" style="width: 12rem;">
+                    <div class="card-body">
+                        <h5 class="card-title" id="city-fc1">Date</h5>
+                        <img id="icon-fc1">
+                        <p class="card-text" id="temp-fc1">Temp: </p>
+                        <p class="card-text" id="wind-fc1">Wind: </p>
+                        <p class="card-text" id="humidity-fc1">Humidity: </p>
+                    </div>
+                </div>-->
+
+            </div>
+            <div class="forecast">
+            <h2>5 day forecast:</h2>
+            <div class="m-3 row d-flex justify-content-around">
+               
+            <!-- Day 1 -->
+                <div class="card border-dark bg-secondary text-white mb-3" style="width: 12rem;">
+                    <div id= "day-01" class="card-body">
+                      <p class="date">11/14/2021</p>
+                      <img> 
+                      <p class="temp">Temp: </p>
+                      <p class="wind">Wind: </p>
+                      <p class="humidity">Humidity: </p>
+                    </div>
+                  </div>
+
+            <!-- Day 2 -->
+            <div class="card border-dark bg-secondary text-white mb-3" style="width: 12rem;">
+                <div id= "day-02" class="card-body">
+                    <p class="date">11/14/2021</p>
+                    <img> 
+                    <p class="temp">Temp: </p>
+                    <p class="wind">Wind: </p>
+                    <p class="humidity">Humidity: </p>
+                  </div>  
+              </div>
+
+            <!-- Day 3 -->
+            <div class="card border-dark bg-secondary text-white mb-3" style="width: 12rem;">
+                <div id= "day-03" class="card-body">
+                    <p class="date">11/14/2021</p>
+                    <img> 
+                    <p class="temp">Temp: </p>
+                    <p class="wind">Wind: </p>
+                    <p class="humidity">Humidity: </p>
+                  </div>
+              </div>
+
+           <!-- Day 4 -->
+           <div class="card border-dark bg-secondary text-white mb-3" style="width: 12rem;">
+            <div id= "day-04" class="card-body">
+                <p class="date">11/14/2021</p>
+                <img> 
+                <p class="temp">Temp: </p>
+                <p class="wind">Wind: </p>
+                <p class="humidity">Humidity: </p>
+              </div>
+          </div>
+
+            <!-- Day 5 -->
+            <div class="card border-dark bg-secondary text-white mb-3" style="width: 12rem;">
+                <div id= "day-05" class="card-body">
+                    <p class="date">11/14/2021</p>
+                    <img> 
+                    <p class="temp">Temp: </p>
+                    <p class="wind">Wind: </p>
+                    <p class="humidity">Humidity: </p>
+                  </div>
+              </div>
+
+            </div>
         </div>
-    </main>
+        </main>
+        <!-- Last div is wrapper -->
+    </div>
 
 
 
@@ -60,3 +144,8 @@
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
+
+<!-- <h4 class="card-header bg-dark text-light"> In progress </h4> -->
+
+

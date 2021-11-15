@@ -1,4 +1,27 @@
-.jumbotron {
-    height: 30%;
+.cityH2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-weight: lighter;
+}
 
+header h1 {
+    background-image:linear-gradient(to right,#0288d1,#00000d);
+    font-weight: bold;
+}
+
+.card-forecast {
+    height: 300px;
+}
+
+.m-1 {
+    color: white;
+}
+
+.list-head {
+    list-style: none;
+}
+
+.current-weather {
+    border-style: solid;
 }
