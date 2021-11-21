@@ -1,10 +1,14 @@
 // Declarations
 var searchInput = document.querySelector("#cityName");
 var searchBtn = document.querySelector(".btn-info");
-
-// var current = moment().add(day, 'days').format('L')
-// console.log(current);
-
+console.log('localS', localStorage.getItem('key'));
+if (localStorage.getItem('key') && localStorage.getItem('key').length > 0) {
+    console.log('if')
+    var valueArr = [...localStorage.getItem('key').split(',')];
+} else {
+console.log('else', valueArr)
+var valueArr = [];
+}
 // Get Weather Data API
 var getUserCity = function (cityName) {
   // Format the github API url
@@ -12,7 +16,6 @@ var getUserCity = function (cityName) {
     `https://api.openweathermap.org/data/2.5/weather?q=` +
     cityName +
     `&units=imperial&appid=4b9cf619ade932d30706497fcf318e67`;
-  // console.log(apiUrl);
 
   // Make a request to the url
   fetch(apiUrl)
@@ -80,15 +83,10 @@ var oneCall = function (data) {
 
 // save data to local storage
 var saveLocalStorage = function (city) {
-  i = Math.floor(Math.random() * 3000);
-  var saveStorage = localStorage.setItem(`key[${i}]`, city);
-  console.log(saveStorage);
-
-  /* load data from local storage to build array before push
-    var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-    console.log(searchHistory);
-    searchHistory.push(city);
-    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));*/
+  console.log('city', city);
+  console.log('value', valueArr);
+  valueArr.unshift(city);
+  localStorage.setItem(`key`, valueArr);
 };
 
 // Click listener
@@ -109,6 +107,24 @@ function formHandler() {
   });
 }
 
-formHandler();
+// load local storage data
+var loadLocalStorage = function () {
+    console.log('localStorage:',localStorage);
+    console.log('key', localStorage.getItem('key'));
 
-
+    var getValue = localStorage.getItem('key');
+    if (!getValue) {
+    return false;
+    }
+    getValue = getValue.split(',')
+    console.log(getValue);
+  
+  
+    // loop through array and create search history buttons
+    getValue.forEach(function(item){
+        $("#city-buttons").append(`<button class="search-hist col-12 btn btn-secondary mb-2" data-language="${item}">${item}</button>`)
+})
+}
+  
+  loadLocalStorage();
+  formHandler();
