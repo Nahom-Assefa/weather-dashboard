@@ -110,6 +110,7 @@ function formHandler() {
   });
 }
 
+// backwards compatibility for past rendered cities
 oldCities.addEventListener("click", function (event) {
   const city = event.target.textContent;
   getUserCity(city);
