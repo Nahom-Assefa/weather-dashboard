@@ -1,14 +1,13 @@
 // Declarations
 var searchInput = document.querySelector("#cityName");
 var searchBtn = document.querySelector(".btn-info");
+var oldCities = document.querySelector("#list-card");
 var weather_icon = "http://openweathermap.org/img/w/";
 
 // Create persistence
 if (localStorage.getItem("key") && localStorage.getItem("key").length > 0) {
-  console.log("if");
   var valueArr = [...localStorage.getItem("key").split(",")];
 } else {
-  console.log("else", valueArr);
   var valueArr = [];
 }
 // Get Weather Data API
@@ -39,7 +38,7 @@ var getUserCity = function (cityName) {
 
 var displayWeather = function (data) {
   $(".current-weather")
-    .children("span")
+    .children("#city-date")
     .html(`${data.name} (${moment().format("MM/DD/YYYY")})`);
   $("#weather-icon").attr("src", `${weather_icon}${data.weather[0].icon}.png`);
   $(".current-weather").children("#temp-dash").html(`Temp: ${data.main.temp}`);
@@ -61,7 +60,6 @@ var oneCall = function (data) {
       //Request was successful
       if (response.ok) {
         response.json().then(function (data) {
-            console.log('one call', data);
           $("#uv-dash")
             .html(`UV Index: ${data.current.uvi}`)
             .addClass("btn-success");
@@ -69,13 +67,15 @@ var oneCall = function (data) {
             $("#date-0" + i).html(
               "<h6>" + moment().add(i, "days").format("L") + "</h6>"
             );
-            $("#icon-0" + i).attr("src", `${weather_icon}${data.daily[i].weather[0].icon}.png`)
+            $("#icon-0" + i).attr(
+              "src",
+              `${weather_icon}${data.daily[i].weather[0].icon}.png`
+            );
             $("#temp-0" + i).html(`Temp: ${data.daily[i].temp.day} °F`);
             $("#wind-0" + i).html(`Wind: ${data.daily[i].wind_speed} MPH`);
             $("#humidity-0" + i).html(`Humidity: ${data.daily[i].humidity} %`);
           }
           jsonData = data;
-          console.log(data);
         });
       } else {
         alert("Error: GitHub User Not Found");
@@ -88,8 +88,6 @@ var oneCall = function (data) {
 
 // save data to local storage
 var saveLocalStorage = function (city) {
-  console.log("city", city);
-  console.log("value", valueArr);
   valueArr.unshift(city);
   localStorage.setItem(`key`, valueArr);
 };
@@ -100,8 +98,8 @@ function formHandler() {
     event.preventDefault();
     var cityName = searchInput.value.trim();
     if (cityName) {
-      $("#city-buttons").append(
-        `<button class="search-hist col-12 btn btn-secondary mb-2" data-language="${cityName}">${cityName}</button>`
+      $("#list-card").append(
+        `<button class="search-hist col-12 btn btn-secondary mb-2" data-city="${cityName}">${cityName}</button>`
       );
       getUserCity(cityName);
       saveLocalStorage(cityName);
@@ -112,21 +110,22 @@ function formHandler() {
   });
 }
 
+oldCities.addEventListener("click", function (event) {
+  const city = event.target.textContent;
+  getUserCity(city);
+});
+
 // load local storage data
 var loadLocalStorage = function () {
-  console.log("localStorage:", localStorage);
-  console.log("key", localStorage.getItem("key"));
-
   var getValue = localStorage.getItem("key");
   if (!getValue) {
     return false;
   }
   getValue = getValue.split(",");
-  console.log(getValue);
 
   // loop through array and create search history buttons
   getValue.forEach(function (item) {
-    $("#city-buttons").append(
+    $("#list-card").append(
       `<button class="search-hist col-12 btn btn-secondary mb-2" data-language="${item}">${item}</button>`
     );
   });
